@@ -75,6 +75,7 @@ int main(void)
 	SafeRelease(pColorFrame);
 	
 	imshow("data", data_m);
+	imwrite("out.png", data_m);
 
 	waitKey(0);
 
@@ -83,60 +84,4 @@ int main(void)
 	SafeRelease(m_pKinectSensor);
 
 	return 0;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	/*
-
-	// Color reader
-	IColorFrameReader*      m_pColorFrameReader = 0;
-
-	// Initialize the Kinect and get the color reader
-	IColorFrameSource* pColorFrameSource = 0;
-
-	HRESULT hr = m_pKinectSensor->Open();
-
-	if (SUCCEEDED(hr))
-	{
-		hr = m_pKinectSensor->get_ColorFrameSource(&pColorFrameSource);
-	}
-
-	if (SUCCEEDED(hr))
-	{
-		hr = pColorFrameSource->OpenReader(&m_pColorFrameReader);
-	}
-
-	SafeRelease(pColorFrameSource);
-
-
-
-
-
-
-	// done with color frame reader
-	SafeRelease(m_pColorFrameReader);
-
-	// close the Kinect Sensor
-	if (m_pKinectSensor)
-	{
-		m_pKinectSensor->Close();
-	}
-
-	SafeRelease(m_pKinectSensor);
-
-	return 0;
-
-	*/
 }
