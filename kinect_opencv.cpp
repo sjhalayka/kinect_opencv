@@ -1,11 +1,12 @@
 #include "kinect_opencv.h"
 
+// Get the Kinect SDK 2.0
+// https://www.microsoft.com/en-ca/download/details.aspx?id=44561
 
 int main(void)
 {
 	HRESULT hr;
 
-	// Current Kinect
 	IKinectSensor *m_pKinectSensor = NULL;
 	IColorFrameReader *m_pColorFrameReader;
 	hr = GetDefaultKinectSensor(&m_pKinectSensor);
