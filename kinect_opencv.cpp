@@ -107,8 +107,8 @@ int main(void)
 	}
 
 	Mat colour_frame;
-	INT frame_width, frame_height;
-	hr = get_colour_frame(colour_frame, frame_width, frame_height, m_pKinectSensor);
+	INT colour_frame_width, colour_frame_height;
+	hr = get_colour_frame(colour_frame, colour_frame_width, colour_frame_height, m_pKinectSensor);
 
 	if (FAILED(hr))
 	{
@@ -116,7 +116,7 @@ int main(void)
 		return hr;
 	}
 
-	VideoWriter vid_out("output.avi", CV_FOURCC('M', 'J', 'P', 'G'), 30, Size(frame_width, frame_height));
+	VideoWriter vid_out("output.avi", CV_FOURCC('M', 'J', 'P', 'G'), 30, Size(colour_frame_width, colour_frame_height));
 	
 	imshow("colour", colour_frame);
 	vid_out.write(colour_frame);
@@ -126,7 +126,7 @@ int main(void)
 		if (waitKey(33) >= 0)
 			break;
 
-		hr = get_colour_frame(colour_frame, frame_width, frame_height, m_pKinectSensor);
+		hr = get_colour_frame(colour_frame, colour_frame_width, colour_frame_height, m_pKinectSensor);
 
 		if (FAILED(hr))
 		{
