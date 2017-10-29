@@ -2,7 +2,6 @@
 
 
 #include <windows.h>
-#include <d2d1.h>
 #include <Kinect.h>
 
 #pragma comment ( lib, "d2d1.lib" )
