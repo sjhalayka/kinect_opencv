@@ -53,6 +53,13 @@ int main(void)
 		return hr;
 	}
 
+	INT frame_width, frame_height;
+	IFrameDescription *pDescription;
+	pColorFrame->get_FrameDescription(&pDescription);
+	pDescription->get_Width(&frame_width);
+	pDescription->get_Height(&frame_height);
+	SafeRelease(pDescription);
+
 	UINT nBufferSize = 0;
 	BYTE pBuffer = 0;
 	hr = pColorFrame->AccessRawUnderlyingBuffer(&nBufferSize, reinterpret_cast<BYTE**>(&pBuffer));
@@ -63,7 +70,10 @@ int main(void)
 		return hr;
 	}
 
-	Mat data_m(640, 480, CV_8UC4, reinterpret_cast<BYTE *>(pBuffer));
+	Mat data_m(frame_width, frame_height, CV_8UC4, pBuffer);
+	
+	SafeRelease(pColorFrame);
+	
 	imshow("data", data_m);
 
 	waitKey(0);
