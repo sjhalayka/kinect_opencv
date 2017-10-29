@@ -74,10 +74,14 @@ int main(void)
 	
 	SafeRelease(pColorFrame);
 	
+
+
 	imshow("data", data_m);
 	imwrite("out.png", data_m);
 
 	waitKey(0);
+
+	
 
 	SafeRelease(m_pColorFrameReader);
 	m_pKinectSensor->Close();
