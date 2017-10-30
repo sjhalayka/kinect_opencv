@@ -3,7 +3,6 @@
 
 #include <windows.h>
 #include <Kinect.h>
-#pragma comment ( lib, "d2d1.lib" )
 #pragma comment ( lib, "kinect20.lib" )
 
 #include <opencv2/opencv.hpp>
