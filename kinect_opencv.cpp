@@ -75,11 +75,10 @@ HRESULT get_colour_frame(Mat &frame_content, INT &frame_width, INT &frame_height
 	}
 
 	Mat data_m(frame_width, frame_height, CV_8UC4, pBuffer);
+	cvtColor(data_m, frame_content, CV_RGBA2BGR);
 
 	SafeRelease(pFrame);
 	SafeRelease(m_pFrameReader);
-
-	frame_content = data_m.clone();
 
 	return S_OK;
 }
@@ -108,6 +107,7 @@ int main(void)
 
 	Mat colour_frame;
 	INT colour_frame_width, colour_frame_height;
+
 	hr = get_colour_frame(colour_frame, colour_frame_width, colour_frame_height, m_pKinectSensor);
 
 	if (FAILED(hr))
@@ -116,10 +116,10 @@ int main(void)
 		return hr;
 	}
 
-	VideoWriter vid_out("output.avi", CV_FOURCC('M', 'J', 'P', 'G'), 30, Size(colour_frame_width, colour_frame_height));
+	VideoWriter colour_vid_out("colour.avi", CV_FOURCC('M', 'J', 'P', 'G'), 30, Size(colour_frame_width, colour_frame_height));
 	
 	imshow("colour", colour_frame);
-	vid_out.write(colour_frame);
+	colour_vid_out.write(colour_frame);
 
 	for (;;)
 	{
@@ -135,7 +135,7 @@ int main(void)
 		}
 
 		imshow("colour", colour_frame);
-		vid_out.write(colour_frame);
+		colour_vid_out.write(colour_frame);
 	}
 
 	m_pKinectSensor->Close();
