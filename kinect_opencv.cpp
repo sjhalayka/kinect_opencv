@@ -75,7 +75,7 @@ HRESULT get_colour_frame(Mat &frame_content, INT &frame_width, INT &frame_height
 	}
 
 	Mat data_m(frame_width, frame_height, CV_8UC4, pBuffer);
-	cvtColor(data_m, frame_content, CV_RGBA2BGR);
+	cvtColor(data_m, frame_content, CV_BGRA2BGR);
 
 	SafeRelease(pFrame);
 	SafeRelease(m_pFrameReader);
