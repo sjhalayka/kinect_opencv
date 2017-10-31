@@ -96,6 +96,7 @@ HRESULT get_colour_frame(Mat &frame_content, INT &frame_width, INT &frame_height
 	}
 
 	Mat data_m(frame_width, frame_height, CV_8UC4, pBuffer);
+	// check out convertTo member function
 	//cvtColor(data_m, frame_content, CV_BGRA2BGR);
 	frame_content = data_m.clone();
 
