@@ -60,17 +60,17 @@ int main(void)
 		return hr;
 	}
 
-	VideoWriter colour_vid_out("colour.avi", CV_FOURCC('M', 'J', 'P', 'G'), 30, Size(colour_frame_width, colour_frame_height));
-	VideoWriter depth_vid_out("depth.avi", CV_FOURCC('M', 'J', 'P', 'G'), 30, Size(depth_frame_width, depth_frame_height));
-	VideoWriter infrared_vid_out("infrared.avi", CV_FOURCC('M', 'J', 'P', 'G'), 30, Size(infrared_frame_width, infrared_frame_height));
+//	VideoWriter colour_vid_out("colour.avi", CV_FOURCC('M', 'J', 'P', 'G'), 30, Size(colour_frame_width, colour_frame_height));
+//	VideoWriter depth_vid_out("depth.avi", CV_FOURCC('M', 'J', 'P', 'G'), 30, Size(depth_frame_width, depth_frame_height));
+//	VideoWriter infrared_vid_out("infrared.avi", CV_FOURCC('M', 'J', 'P', 'G'), 30, Size(infrared_frame_width, infrared_frame_height));
 	
 	imshow("colour", colour_frame);
 	imshow("depth", depth_frame);
 	imshow("infrared", infrared_frame);
 
-	colour_vid_out.write(colour_frame);
-	depth_vid_out.write(depth_frame);
-	infrared_vid_out.write(infrared_frame);
+//	colour_vid_out.write(colour_frame);
+//	depth_vid_out.write(depth_frame);
+//	infrared_vid_out.write(infrared_frame);
 
 	for (;;)
 	{
@@ -105,9 +105,9 @@ int main(void)
 		imshow("depth", depth_frame);
 		imshow("infrared", infrared_frame);
 
-		colour_vid_out.write(colour_frame);
-		depth_vid_out.write(depth_frame);
-		infrared_vid_out.write(infrared_frame);
+//		colour_vid_out.write(colour_frame);
+//		depth_vid_out.write(depth_frame);
+//		infrared_vid_out.write(infrared_frame);
 	}
 
 

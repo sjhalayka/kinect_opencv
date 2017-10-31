@@ -96,7 +96,8 @@ HRESULT get_colour_frame(Mat &frame_content, INT &frame_width, INT &frame_height
 	}
 
 	Mat data_m(frame_width, frame_height, CV_8UC4, pBuffer);
-	cvtColor(data_m, frame_content, CV_BGRA2BGR);
+	//cvtColor(data_m, frame_content, CV_BGRA2BGR);
+	frame_content = data_m.clone();
 
 	SafeRelease(pFrame);
 	SafeRelease(m_pFrameReader);
@@ -176,7 +177,8 @@ HRESULT get_depth_frame(Mat &frame_content, INT &frame_width, INT &frame_height,
 	}
 
 	Mat data_m(frame_width, frame_height, CV_16UC1, pBuffer);
-	cvtColor(data_m, frame_content, CV_GRAY2BGR);
+//	cvtColor(data_m, frame_content, CV_GRAY2BGR);
+	frame_content = data_m.clone();
 
 	SafeRelease(pFrame);
 	SafeRelease(m_pFrameReader);
@@ -256,7 +258,8 @@ HRESULT get_infrared_frame(Mat &frame_content, INT &frame_width, INT &frame_heig
 	}
 
 	Mat data_m(frame_width, frame_height, CV_16UC1, pBuffer);
-	cvtColor(data_m, frame_content, CV_GRAY2BGR);
+	//cvtColor(data_m, frame_content, CV_GRAY2BGR);
+	frame_content = data_m.clone();
 
 	SafeRelease(pFrame);
 	SafeRelease(m_pFrameReader);
