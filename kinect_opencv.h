@@ -85,7 +85,7 @@ HRESULT get_colour_frame(Mat &frame_content, INT &frame_width, INT &frame_height
 
 	SafeRelease(pDescription);
 
-	UINT nBufferSize = 0;
+	UINT nBufferSize = 0; // Number of bytes in pBuffer
 	BYTE *pBuffer = 0;
 	hr = pFrame->AccessRawUnderlyingBuffer(&nBufferSize, &pBuffer);
 
@@ -166,7 +166,7 @@ HRESULT get_depth_frame(Mat &frame_content, INT &frame_width, INT &frame_height,
 
 	SafeRelease(pDescription);
 
-	UINT nBufferSize = 0;
+	UINT nBufferSize = 0; // Number of bytes in pBuffer
 	UINT16 *pBuffer = 0;
 	hr = pFrame->AccessUnderlyingBuffer(&nBufferSize, &pBuffer);
 
@@ -245,7 +245,7 @@ HRESULT get_infrared_frame(Mat &frame_content, INT &frame_width, INT &frame_heig
 
 	SafeRelease(pDescription);
 
-	UINT nBufferSize = 0;
+	UINT nBufferSize = 0; // Number of bytes in pBuffer
 	UINT16 *pBuffer = 0;
 	hr = pFrame->AccessUnderlyingBuffer(&nBufferSize, &pBuffer);
 

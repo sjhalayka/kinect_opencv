@@ -115,5 +115,9 @@ int main(void)
 	m_pKinectSensor->Close();
 	SafeRelease(m_pKinectSensor);
 
+
+
+	destroyAllWindows();
+
 	return 0;
 }
