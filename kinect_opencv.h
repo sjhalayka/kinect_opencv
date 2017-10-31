@@ -87,7 +87,7 @@ HRESULT get_colour_frame(Mat &frame_content, INT &frame_width, INT &frame_height
 
 	UINT nBufferSize = 0;
 	BYTE *pBuffer = 0;
-	hr = pFrame->AccessRawUnderlyingBuffer(&nBufferSize, reinterpret_cast<BYTE**>(&pBuffer));
+	hr = pFrame->AccessRawUnderlyingBuffer(&nBufferSize, &pBuffer);
 
 	if (FAILED(hr))
 	{
@@ -96,7 +96,7 @@ HRESULT get_colour_frame(Mat &frame_content, INT &frame_width, INT &frame_height
 	}
 
 	// check out convertTo member function
-	//cvtColor(data_m, frame_content, CV_BGRA2BGR);
+	//cvtColor(in, out, CV_BGRA2BGR);
 	frame_content = Mat(frame_width, frame_height, CV_8UC4, pBuffer).clone();
 
 	SafeRelease(pFrame);
@@ -168,7 +168,7 @@ HRESULT get_depth_frame(Mat &frame_content, INT &frame_width, INT &frame_height,
 
 	UINT nBufferSize = 0;
 	UINT16 *pBuffer = 0;
-	hr = pFrame->AccessUnderlyingBuffer(&nBufferSize, reinterpret_cast<UINT16**>(&pBuffer));
+	hr = pFrame->AccessUnderlyingBuffer(&nBufferSize, &pBuffer);
 
 	if (FAILED(hr))
 	{
@@ -247,7 +247,7 @@ HRESULT get_infrared_frame(Mat &frame_content, INT &frame_width, INT &frame_heig
 
 	UINT nBufferSize = 0;
 	UINT16 *pBuffer = 0;
-	hr = pFrame->AccessUnderlyingBuffer(&nBufferSize, reinterpret_cast<UINT16**>(&pBuffer));
+	hr = pFrame->AccessUnderlyingBuffer(&nBufferSize, &pBuffer);
 
 	if (FAILED(hr))
 	{
