@@ -3,7 +3,7 @@
 
 #include <windows.h>
 #include <Kinect.h>
-#pragma comment ( lib, "kinect20.lib" )
+#pragma comment (lib, "kinect20.lib")
 
 #include <opencv2/opencv.hpp>
 using namespace cv;
