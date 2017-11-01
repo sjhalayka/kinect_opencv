@@ -32,7 +32,7 @@ HRESULT get_colour_frame(Mat &frame_content, INT &frame_width, INT &frame_height
 {
 	HRESULT hr;
 
-	IColorFrameReader *m_pFrameReader;
+	IColorFrameReader *m_pFrameReader = NULL;
 	IColorFrameSource *pFrameSource = NULL;
 
 	hr = m_pKinectSensor->get_ColorFrameSource(&pFrameSource);
@@ -52,7 +52,7 @@ HRESULT get_colour_frame(Mat &frame_content, INT &frame_width, INT &frame_height
 	}
 
 	SafeRelease(pFrameSource);
-
+	
 	IColorFrame* pFrame = NULL;
 	hr = m_pFrameReader->AcquireLatestFrame(&pFrame);
 
@@ -62,7 +62,7 @@ HRESULT get_colour_frame(Mat &frame_content, INT &frame_width, INT &frame_height
 		return hr;
 	}
 
-	IFrameDescription *pDescription;
+	IFrameDescription *pDescription = NULL;
 	hr = pFrame->get_FrameDescription(&pDescription);
 
 	if (FAILED(hr))
@@ -90,7 +90,7 @@ HRESULT get_colour_frame(Mat &frame_content, INT &frame_width, INT &frame_height
 	SafeRelease(pDescription);
 
 	UINT nBufferSize = 0; // Number of bytes in pBuffer
-	BYTE *pBuffer = 0;
+	BYTE *pBuffer = NULL;
 	hr = pFrame->AccessRawUnderlyingBuffer(&nBufferSize, &pBuffer);
 
 	if (FAILED(hr))
@@ -115,7 +115,7 @@ HRESULT get_depth_frame(Mat &frame_content, INT &frame_width, INT &frame_height,
 {
 	HRESULT hr;
 
-	IDepthFrameReader *m_pFrameReader;
+	IDepthFrameReader *m_pFrameReader = NULL;
 	IDepthFrameSource *pFrameSource = NULL;
 
 	hr = m_pKinectSensor->get_DepthFrameSource(&pFrameSource);
@@ -145,7 +145,7 @@ HRESULT get_depth_frame(Mat &frame_content, INT &frame_width, INT &frame_height,
 		return hr;
 	}
 
-	IFrameDescription *pDescription;
+	IFrameDescription *pDescription = NULL;
 	hr = pFrame->get_FrameDescription(&pDescription);
 
 	if (FAILED(hr))
@@ -173,7 +173,7 @@ HRESULT get_depth_frame(Mat &frame_content, INT &frame_width, INT &frame_height,
 	SafeRelease(pDescription);
 
 	UINT nBufferSize = 0; // Number of bytes in pBuffer
-	UINT16 *pBuffer = 0;
+	UINT16 *pBuffer = NULL;
 	hr = pFrame->AccessUnderlyingBuffer(&nBufferSize, &pBuffer);
 
 	if (FAILED(hr))
@@ -202,7 +202,7 @@ HRESULT get_infrared_frame(Mat &frame_content, INT &frame_width, INT &frame_heig
 {
 	HRESULT hr;
 
-	IInfraredFrameReader *m_pFrameReader;
+	IInfraredFrameReader *m_pFrameReader = NULL;
 	IInfraredFrameSource *pFrameSource = NULL;
 
 	hr = m_pKinectSensor->get_InfraredFrameSource(&pFrameSource);
@@ -232,7 +232,7 @@ HRESULT get_infrared_frame(Mat &frame_content, INT &frame_width, INT &frame_heig
 		return hr;
 	}
 
-	IFrameDescription *pDescription;
+	IFrameDescription *pDescription = NULL;
 	hr = pFrame->get_FrameDescription(&pDescription);
 
 	if (FAILED(hr))
@@ -260,7 +260,7 @@ HRESULT get_infrared_frame(Mat &frame_content, INT &frame_width, INT &frame_heig
 	SafeRelease(pDescription);
 
 	UINT nBufferSize = 0; // Number of bytes in pBuffer
-	UINT16 *pBuffer = 0;
+	UINT16 *pBuffer = NULL;
 	hr = pFrame->AccessUnderlyingBuffer(&nBufferSize, &pBuffer);
 
 	if (FAILED(hr))
