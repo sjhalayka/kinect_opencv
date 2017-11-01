@@ -284,3 +284,8 @@ HRESULT get_infrared_frame(Mat &frame_content, INT &frame_width, INT &frame_heig
 
 	return S_OK;
 }
+
+//int16_t i = 0x1234;
+//uint16_t n = i; // because shifting the sign bit invokes UB
+//int8_t hi = ((i >> 8) & 0xff);
+//int8_t lo = ((i >> 0) & 0xff);
