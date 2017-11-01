@@ -184,8 +184,6 @@ HRESULT get_depth_frame(Mat &frame_content, INT &frame_width, INT &frame_height,
 
 	frame_content = Mat(frame_width, frame_height, CV_16UC1, pBuffer).clone();
 
-	frame_content = Mat(frame_width, frame_height, CV_16UC1, pBuffer).clone();
-
 	Mat byte_frame_content(frame_width, frame_height, CV_8UC3);
 
 	for (int j = 0; j < frame_content.rows; j++)
