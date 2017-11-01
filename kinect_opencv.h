@@ -1,6 +1,9 @@
 #pragma once
 
 
+
+// Get the Kinect SDK 2.0
+// https://www.microsoft.com/en-ca/download/details.aspx?id=44561
 #include <windows.h>
 #include <Kinect.h>
 #pragma comment (lib, "kinect20.lib")
@@ -11,6 +14,7 @@ using namespace cv;
 
 #include <iostream>
 using namespace std;
+
 
 
 // Safe release for interfaces
