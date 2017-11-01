@@ -184,13 +184,33 @@ HRESULT get_depth_frame(Mat &frame_content, INT &frame_width, INT &frame_height,
 
 	frame_content = Mat(frame_width, frame_height, CV_16UC1, pBuffer).clone();
 
-	Mat float_frame_content(frame_width, frame_height, CV_32FC1);
+	frame_content = Mat(frame_width, frame_height, CV_16UC1, pBuffer).clone();
+
+	Mat byte_frame_content(frame_width, frame_height, CV_8UC3);
 
 	for (int j = 0; j < frame_content.rows; j++)
+	{
 		for (int i = 0; i < frame_content.cols; i++)
-			float_frame_content.at<float>(j, i) = frame_content.at<UINT16>(j, i) / 65535.0f;
+		{
+			UINT16 a = frame_content.at<UINT16>(j, i);
 
-	frame_content = float_frame_content.clone();
+			BYTE hi = (a >> 8) & 0xff;
+			BYTE low = (a >> 0) & 0xff;
+			byte_frame_content.at<Vec3b>(j, i)[0] = hi;
+			byte_frame_content.at<Vec3b>(j, i)[1] = low;
+			byte_frame_content.at<Vec3b>(j, i)[2] = 0;
+		}
+	}
+
+	frame_content = byte_frame_content.clone();
+
+	//Mat float_frame_content(frame_width, frame_height, CV_32FC1);
+
+	//for (int j = 0; j < frame_content.rows; j++)
+	//	for (int i = 0; i < frame_content.cols; i++)
+	//		float_frame_content.at<float>(j, i) = frame_content.at<UINT16>(j, i) / 65535.0f;
+
+	//frame_content = float_frame_content.clone();
 
 	SafeRelease(pFrame);
 	SafeRelease(m_pFrameReader);
@@ -271,13 +291,31 @@ HRESULT get_infrared_frame(Mat &frame_content, INT &frame_width, INT &frame_heig
 
 	frame_content = Mat(frame_width, frame_height, CV_16UC1, pBuffer).clone();
 
-	Mat float_frame_content(frame_width, frame_height, CV_32FC1);
+	Mat byte_frame_content(frame_width, frame_height, CV_8UC3);
 
 	for (int j = 0; j < frame_content.rows; j++)
+	{
 		for (int i = 0; i < frame_content.cols; i++)
-			float_frame_content.at<float>(j, i) = frame_content.at<UINT16>(j, i) / 65535.0f;
+		{
+			UINT16 a = frame_content.at<UINT16>(j, i);
 
-	frame_content = float_frame_content.clone();
+			BYTE hi = (a >> 8) & 0xff;
+			BYTE low = (a >> 0) & 0xff;
+			byte_frame_content.at<Vec3b>(j, i)[0] = hi;
+			byte_frame_content.at<Vec3b>(j, i)[1] = low;
+			byte_frame_content.at<Vec3b>(j, i)[2] = 0;
+		}
+	}
+
+	frame_content = byte_frame_content.clone();
+
+	//Mat float_frame_content(frame_width, frame_height, CV_32FC1);
+
+	//for (int j = 0; j < frame_content.rows; j++)
+	//	for (int i = 0; i < frame_content.cols; i++)
+	//		float_frame_content.at<float>(j, i) = frame_content.at<UINT16>(j, i) / 65535.0f;
+
+	//frame_content = float_frame_content.clone();
 
 	SafeRelease(pFrame);
 	SafeRelease(m_pFrameReader);
@@ -285,7 +323,3 @@ HRESULT get_infrared_frame(Mat &frame_content, INT &frame_width, INT &frame_heig
 	return S_OK;
 }
 
-//int16_t i = 0x1234;
-//uint16_t n = i; // because shifting the sign bit invokes UB
-//int8_t hi = ((i >> 8) & 0xff);
-//int8_t lo = ((i >> 0) & 0xff);
