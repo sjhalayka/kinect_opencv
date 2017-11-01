@@ -112,6 +112,7 @@ int main(void)
 
 
 
+	// Don't really care about success at this point
 	m_pKinectSensor->Close();
 	SafeRelease(m_pKinectSensor);
 
