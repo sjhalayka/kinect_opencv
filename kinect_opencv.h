@@ -180,7 +180,7 @@ HRESULT get_depth_frame(Mat &frame_content, INT &frame_width, INT &frame_height,
 
 	frame_content = Mat(frame_width, frame_height, CV_16UC1, pBuffer).clone();
 
-	Mat float_frame_content(frame_width, frame_height, CV_32F);
+	Mat float_frame_content(frame_width, frame_height, CV_32FC1);
 
 	for (int j = 0; j < frame_content.rows; j++)
 		for (int i = 0; i < frame_content.cols; i++)
