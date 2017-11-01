@@ -77,6 +77,7 @@ int main(void)
 		if (waitKey(33) >= 0)
 			break;
 
+		// Get CV_8UC3 image
 		hr = get_colour_frame(colour_frame, colour_frame_width, colour_frame_height, m_pKinectSensor);
 
 		if (FAILED(hr))
@@ -85,6 +86,7 @@ int main(void)
 			return hr;
 		}
 
+		// Get CV_32FC1 image
 		hr = get_depth_frame(depth_frame, depth_frame_width, depth_frame_height, m_pKinectSensor);
 
 		if (FAILED(hr))
@@ -93,6 +95,7 @@ int main(void)
 			return hr;
 		}
 
+		// Get CV_32FC1 image
 		hr = get_infrared_frame(infrared_frame, infrared_frame_width, infrared_frame_height, m_pKinectSensor);
 
 		if (FAILED(hr))
