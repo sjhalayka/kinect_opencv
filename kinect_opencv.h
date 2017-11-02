@@ -101,7 +101,7 @@ HRESULT get_colour_frame(Mat &frame_content, INT &frame_width, INT &frame_height
 
 	// check out convertTo member function
 	//cvtColor(in, out, CV_BGRA2BGR);
-	frame_content = Mat(frame_width, frame_height, CV_8UC4, pBuffer).clone();
+	frame_content = Mat(frame_height, frame_width, CV_8UC4, pBuffer).clone();
 
 	cvtColor(frame_content, frame_content, CV_RGBA2BGR);
 
@@ -182,9 +182,9 @@ HRESULT get_depth_frame(Mat &frame_content, INT &frame_width, INT &frame_height,
 		return hr;
 	}
 
-	frame_content = Mat(frame_width, frame_height, CV_16UC1, pBuffer).clone();
+	frame_content = Mat(frame_height, frame_width, CV_16UC1, pBuffer).clone();
 
-	Mat byte_frame_content(frame_width, frame_height, CV_8UC3);
+	Mat byte_frame_content(frame_height, frame_width, CV_8UC3);
 
 	for (int j = 0; j < frame_content.rows; j++)
 	{
@@ -202,7 +202,7 @@ HRESULT get_depth_frame(Mat &frame_content, INT &frame_width, INT &frame_height,
 
 	frame_content = byte_frame_content.clone();
 
-	//Mat float_frame_content(frame_width, frame_height, CV_32FC1);
+	//Mat float_frame_content(frame_height, frame_width, CV_32FC1);
 
 	//for (int j = 0; j < frame_content.rows; j++)
 	//	for (int i = 0; i < frame_content.cols; i++)
@@ -287,9 +287,9 @@ HRESULT get_infrared_frame(Mat &frame_content, INT &frame_width, INT &frame_heig
 		return hr;
 	}
 
-	frame_content = Mat(frame_width, frame_height, CV_16UC1, pBuffer).clone();
+	frame_content = Mat(frame_height, frame_width, CV_16UC1, pBuffer).clone();
 
-	Mat byte_frame_content(frame_width, frame_height, CV_8UC3);
+	Mat byte_frame_content(frame_height, frame_width, CV_8UC3);
 
 	for (int j = 0; j < frame_content.rows; j++)
 	{
@@ -307,7 +307,7 @@ HRESULT get_infrared_frame(Mat &frame_content, INT &frame_width, INT &frame_heig
 
 	frame_content = byte_frame_content.clone();
 
-	//Mat float_frame_content(frame_width, frame_height, CV_32FC1);
+	//Mat float_frame_content(frame_height, frame_width, CV_32FC1);
 
 	//for (int j = 0; j < frame_content.rows; j++)
 	//	for (int i = 0; i < frame_content.cols; i++)
