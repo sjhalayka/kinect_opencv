@@ -1,4 +1,4 @@
-#include "kinect_opencv.h"
+#include "kinect1.8_opencv.h"
 
 int main(void)
 {
