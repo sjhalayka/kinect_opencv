@@ -5,7 +5,7 @@
 // Uses the Kinect SDK v1.8
 #include <windows.h>
 #include <NuiApi.h>
-#pragma comment (lib, "kinect10.lib")
+#pragma comment (lib, "kinect10.lib") // Use the AMD64 library for 64-bit computers
 
 #include <opencv2/opencv.hpp>
 using namespace cv;
